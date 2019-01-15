@@ -20,7 +20,8 @@ public class App
         Configuration config = new Configuration();
 
         //   ... fill out the config object as appropriate...
-        config.addClasspathEntry("D:\\desktop\\idea\\mybatis-test\\mybatis-generator-test\\src\\main\\resources\\postgresql-9.4.1209.jar");
+//        config.addClasspathEntry("D:\\desktop\\idea\\mybatis-test\\mybatis-generator-test\\src\\main\\resources\\postgresql-9.4.1209.jar");
+//        config.addClasspathEntry("D:\\desktop\\idea\\mybatis-test\\mybatis-generator-test\\src\\main\\resources\\postgresql-9.4.1209.jar");
         Context context=new Context(ModelType.CONDITIONAL);
 
         CommentGeneratorConfiguration commentGeneratorConfiguration=new CommentGeneratorConfiguration();
