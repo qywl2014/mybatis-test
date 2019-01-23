@@ -1,5 +1,6 @@
 package com.wulang.localdatabase.dao;
 
+import com.wulang.localdatabase.domain.UserInfo;
 import com.wulang.localdatabase.model.RoomRobotTaskDO;
 import com.wulang.localdatabase.model.RoomRobotTaskDOExample;
 import java.util.List;
@@ -29,4 +30,10 @@ public interface RoomRobotTaskDAO {
     int updateByPrimaryKey(RoomRobotTaskDO record);
 
     Integer insertList(@Param("list") List<RoomRobotTaskDO> roomRobotTaskDOList);
+
+    Integer insertListUserInfo(@Param("list") List<UserInfo> list);
+
+    Integer updateInTest(@Param("list") List<Integer> list);
+
+    List<UserInfo> selectUserInfoList();
 }

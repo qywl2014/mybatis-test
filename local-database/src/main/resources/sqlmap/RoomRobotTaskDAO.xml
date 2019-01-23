@@ -341,4 +341,24 @@
       );
     </foreach>
   </insert>
+
+  <insert id="insertListUserInfo">
+    insert into kkcx.userinfo (id, point,last_month_point,name) values
+    <foreach collection="list" item="item" separator=",">
+       (#{item.id,jdbcType=INTEGER}, #{item.point,jdbcType=INTEGER}, #{item.lastMonthPoint,jdbcType=INTEGER},#{item.name,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <update id="updateInTest">
+    update
+      kkcx.userinfo
+    set
+      point=112
+    where id in
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=INTEGER}
+    </foreach>
+  </update>
+  <select id="selectUserInfoList" resultType="com.wulang.localdatabase.domain.UserInfo">
+    select id ,point ,last_month_point as lastMonthPoint,name from kkcx.userinfo;
+  </select>
 </mapper>

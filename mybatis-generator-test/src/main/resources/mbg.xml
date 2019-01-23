@@ -16,7 +16,7 @@
     <jdbcConnection driverClass="org.postgresql.Driver"
         connectionURL="jdbc:postgresql://localhost:5432/kkcx"
         userId="postgres"
-        password="wulang123">
+        password="123456">
     </jdbcConnection>
 
     <javaModelGenerator targetPackage="com.wulang.localdatabase.model" targetProject="../src/main/java">
