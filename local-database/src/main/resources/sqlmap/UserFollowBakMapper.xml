@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wulang.localdatabase.dao.UserFollowBakMapper">
+  <resultMap id="BaseResultMap" type="com.wulang.localdatabase.model.UserFollowBak">
+    <id column="userid" jdbcType="INTEGER" property="userid" />
+    <id column="followedid" jdbcType="INTEGER" property="followedid" />
+    <result column="dtime" jdbcType="TIMESTAMP" property="dtime" />
+    <result column="confirmtag" jdbcType="INTEGER" property="confirmtag" />
+    <result column="oggtag" jdbcType="VARCHAR" property="oggtag" />
+    <result column="follow_each_other" jdbcType="INTEGER" property="followEachOther" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    userid, followedid, dtime, confirmtag, oggtag, follow_each_other
+  </sql>
+  <select id="selectByExample" parameterType="com.wulang.localdatabase.model.UserFollowBakExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from kkcx.user_follow_bak
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${limit} offset ${offset}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.wulang.localdatabase.model.UserFollowBakKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from kkcx.user_follow_bak
+    where userid = #{userid,jdbcType=INTEGER}
+      and followedid = #{followedid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.wulang.localdatabase.model.UserFollowBakKey">
+    delete from kkcx.user_follow_bak
+    where userid = #{userid,jdbcType=INTEGER}
+      and followedid = #{followedid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wulang.localdatabase.model.UserFollowBakExample">
+    delete from kkcx.user_follow_bak
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wulang.localdatabase.model.UserFollowBak">
+    insert into kkcx.user_follow_bak (userid, followedid, dtime, 
+      confirmtag, oggtag, follow_each_other
+      )
+    values (#{userid,jdbcType=INTEGER}, #{followedid,jdbcType=INTEGER}, #{dtime,jdbcType=TIMESTAMP}, 
+      #{confirmtag,jdbcType=INTEGER}, #{oggtag,jdbcType=VARCHAR}, #{followEachOther,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wulang.localdatabase.model.UserFollowBak">
+    insert into kkcx.user_follow_bak
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="followedid != null">
+        followedid,
+      </if>
+      <if test="dtime != null">
+        dtime,
+      </if>
+      <if test="confirmtag != null">
+        confirmtag,
+      </if>
+      <if test="oggtag != null">
+        oggtag,
+      </if>
+      <if test="followEachOther != null">
+        follow_each_other,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="followedid != null">
+        #{followedid,jdbcType=INTEGER},
+      </if>
+      <if test="dtime != null">
+        #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmtag != null">
+        #{confirmtag,jdbcType=INTEGER},
+      </if>
+      <if test="oggtag != null">
+        #{oggtag,jdbcType=VARCHAR},
+      </if>
+      <if test="followEachOther != null">
+        #{followEachOther,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wulang.localdatabase.model.UserFollowBakExample" resultType="java.lang.Long">
+    select count(*) from kkcx.user_follow_bak
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update kkcx.user_follow_bak
+    <set>
+      <if test="record.userid != null">
+        userid = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.followedid != null">
+        followedid = #{record.followedid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dtime != null">
+        dtime = #{record.dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.confirmtag != null">
+        confirmtag = #{record.confirmtag,jdbcType=INTEGER},
+      </if>
+      <if test="record.oggtag != null">
+        oggtag = #{record.oggtag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.followEachOther != null">
+        follow_each_other = #{record.followEachOther,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update kkcx.user_follow_bak
+    set userid = #{record.userid,jdbcType=INTEGER},
+      followedid = #{record.followedid,jdbcType=INTEGER},
+      dtime = #{record.dtime,jdbcType=TIMESTAMP},
+      confirmtag = #{record.confirmtag,jdbcType=INTEGER},
+      oggtag = #{record.oggtag,jdbcType=VARCHAR},
+      follow_each_other = #{record.followEachOther,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wulang.localdatabase.model.UserFollowBak">
+    update kkcx.user_follow_bak
+    <set>
+      <if test="dtime != null">
+        dtime = #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="confirmtag != null">
+        confirmtag = #{confirmtag,jdbcType=INTEGER},
+      </if>
+      <if test="oggtag != null">
+        oggtag = #{oggtag,jdbcType=VARCHAR},
+      </if>
+      <if test="followEachOther != null">
+        follow_each_other = #{followEachOther,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=INTEGER}
+      and followedid = #{followedid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wulang.localdatabase.model.UserFollowBak">
+    update kkcx.user_follow_bak
+    set dtime = #{dtime,jdbcType=TIMESTAMP},
+      confirmtag = #{confirmtag,jdbcType=INTEGER},
+      oggtag = #{oggtag,jdbcType=VARCHAR},
+      follow_each_other = #{followEachOther,jdbcType=INTEGER}
+    where userid = #{userid,jdbcType=INTEGER}
+      and followedid = #{followedid,jdbcType=INTEGER}
+  </update>
+</mapper>

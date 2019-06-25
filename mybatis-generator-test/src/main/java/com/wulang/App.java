@@ -24,7 +24,7 @@ public class App
 //        config.addClasspathEntry("D:\\desktop\\idea\\mybatis-test\\mybatis-generator-test\\src\\main\\resources\\postgresql-9.4.1209.jar");
         Context context=new Context(ModelType.CONDITIONAL);
         PluginConfiguration pluginConfiguration=new PluginConfiguration();
-        pluginConfiguration.setConfigurationType("com.wulang.localdatabase.plugin.PagePlugin");
+        pluginConfiguration.setConfigurationType("com.wulang.localdatabase.plugin.PostgresqlPagePlugin");
         context.addPluginConfiguration(pluginConfiguration);
 
         CommentGeneratorConfiguration commentGeneratorConfiguration=new CommentGeneratorConfiguration();
